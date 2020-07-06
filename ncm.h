@@ -79,7 +79,7 @@ public:
 			//printf_s("%f,  %f\r\n", mesh.data(*eter).weight, weight(*eter));
 			if (L.coeff(mesh.to_vertex_handle(he).idx(), mesh.from_vertex_handle(he).idx()) != L.coeff(mesh.from_vertex_handle(he).idx(), mesh.to_vertex_handle(he).idx()))
 			{
-				printf_s("����\r\n");
+				printf_s("´íÎó\r\n");
 			}
 		}
 	
@@ -174,6 +174,8 @@ public:
 		
 
 	}
+	//这个边界条件似乎是调和方程在边界的拓展，起码从形式上看类似。
+	//论文见Intrinsic Parameterizations of Surface Meshes
 	void natural_confromal_boudary()
 	{
 		Eigen::MatrixXd temp_H(2*LL.cols(),2*mesh.n_vertices()),temp_L(2*mesh.n_vertices(),2*LL.cols());
@@ -229,7 +231,7 @@ public:
 					TMyMesh::VertexHandle v = mesh.to_vertex_handle(*vhter);
 					if (!mesh.is_boundary(v))
 					{
-						printf_s("����\r\n");
+						printf_s("´íÎó\r\n");
 					}
 					temp_H.coeffRef(mesh.data(*vter).index, n + int_v + mesh.data(v).index) = 1;
 					temp_H.coeffRef(LL.cols() + mesh.data(*vter).index, int_v + mesh.data(v).index) = -1;
@@ -237,7 +239,7 @@ public:
 					v = mesh.to_vertex_handle(*vhter);
 					if (!mesh.is_boundary(v))
 					{
-						printf_s("����\r\n");
+						printf_s("´íÎó\r\n");
 					}
 					temp_H.coeffRef(mesh.data(*vter).index, n + int_v + mesh.data(v).index) = -1;
 					temp_H.coeffRef(LL.cols() + mesh.data(*vter).index, int_v + mesh.data(v).index) = 1;
@@ -384,7 +386,7 @@ public:
 		FILE *myfile = fopen(filename, "w");
 		if (myfile == NULL)
 		{
-			printf("ʧ��\r\n");
+			printf("Ê§°Ü\r\n");
 			return;
 		}
 		/*	for (list<VertexHandle>::iterator iter = vlist.begin(); iter != vlist.end(); iter++)
@@ -403,7 +405,7 @@ public:
 		FILE *myfile = fopen(filename, "r");
 		if (myfile == NULL)
 		{
-			printf("ʧ��\r\n");
+			printf("Ê§°Ü\r\n");
 			return;
 		}
 		int a;
